@@ -1,0 +1,184 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #11160c;
+    margin: 5px;
+}
+.logo{
+    height: 2.5em;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+@keyframes stretch{
+   from{width: 1em;}
+   to{width: 7em;}
+}
+.logo-main{
+    background-color: #e7e711;
+    color: #11160c;
+    width: 7em;
+    font-size: 2em;
+    border-radius: 1.5em;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    animation: stretch 2s linear;
+}
+
+.container{
+    text-align: center;
+    color: #f5f5f5;
+}
+.container textarea{
+    resize: none;
+    width: 70%;
+    height: 10vh;
+    text-align: center;
+    background-color: rgba(200,200,200,0.2);
+    border: none;
+}
+.container textarea:focus{
+    outline: #e7e711 solid 0.5px;
+}
+.return-num{
+    width: 30px;
+    text-align: center;
+    background-color: rgba(200,200,200,0.2);
+    border: none;
+    margin: 1em;
+}
+input:focus{
+    outline: hsl(60, 86%, 49%) solid 0.5px;
+}
+.randomize-btn{
+    border: none;
+    width: 7em;
+    border-radius: 2em;
+    margin: 1em;
+    background-color: #f5f5f5;
+    color: #11160c;
+    font-size: 1em;
+}
+.randomize-btn:focus{
+    outline: none;
+}
+.randomize-btn:active{
+    transform: scaleX(0.9);
+}
+
+@keyframes slide-up{
+    from{bottom:0;}
+    to{bottom:100%;}
+}
+.randomized{
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(231, 231, 17,0.7);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.exit{
+    font-size: 2em;
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+    transform: translate(-50%,0);
+}
+.exit:hover{
+    cursor: pointer;
+}
+.exit div{
+    width: 15px;
+    height: 15px;
+    border-top: 1px solid #f5f5f5;
+    border-left: 1px solid #f5f5f5;
+    transform: rotateZ(45deg);
+}
+
+.hide .exit div{
+    transform: rotateZ(0deg);
+    border-left: none;
+}
+
+.result{
+    padding: 10%;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    background-color: #11160c;
+    transform: translate(-50%,-50%);
+}
+.result table{
+    width: 100%;
+    text-align: left;
+}
+td{
+    width: 50%;
+    text-transform: capitalize;
+}
+td.name{
+    padding-left: 1em;
+    text-align: left;
+}
+.roll-dice,.spin-coin{
+    margin: 1em;
+    background-color: #e7e711;
+    color: #11160c;
+}
+.roll-dice::after,.spin-coin::after{
+    content: '\25be';
+    float: right;
+    padding-right: 5px;
+}
+.active.roll-dice::after,.active.spin-coin::after{
+    content: '\25b4';
+}
+.dice{
+    width: 100px;
+    border-radius: 10px;
+}
+.content{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.active + .content{
+    max-height: 150px;
+}
+.hide{
+    bottom:100%;
+}
+.slide-up{
+    animation: slide-up 0.5s linear;
+}
+.guide{
+    padding: 1em;
+}
+.important{
+    color: #ff8888;
+}
+@keyframes spin{
+    from{transform: rotateY(0deg);}
+    to{transform: rotateY(180deg);}
+}
+.spining{
+    animation: spin 400ms linear infinite;
+}
+@keyframes roll{
+    from{transform: rotateZ(0deg);}
+    to{transform: rotateZ(180deg);}
+}
+.rolling{
+    animation: roll 400ms linear infinite;
+}

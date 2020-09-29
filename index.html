@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset= "utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="style.css" >
+    <script src="C:\Users\user\Documents\webdev\vue\vue.js"></script>
+    <link href="C:\Users\user\Documents\fontawesome-free-5.14.0-web\fontawesome-free-5.14.0-web\css\all.css" type="text/css" rel="stylesheet"/>
+    <title> Title </title>
+</head>
+<body>
+
+    <header>
+        <!-- <div class="logo">
+            <h3 class="logo-main">RANDOMIZE</h3>
+        </div> -->
+        <randomized :text='displayText'>{{animate}}</randomized>
+    </header>
+    <div class="container">
+        <div id="main">
+            <p class="guide">Enter a list of names,words or phrase, <span class="important">Seprated by commas</span>
+            in any order to randomly select a specified number (leave empty to randomize all) of items 
+            from the list, you can also enter a list of roles to randomly
+            attach to each item (leave empty for default).</p>
+        
+            <textarea class="user-list-names" placeholder="Input list here ..."></textarea>
+            <p>Return <input type="number" class="return-num"> item(s).</p>
+            <textarea class="user-list-roles" placeholder="Input list of roles here ..."></textarea>
+            <br/><button @click="display=''" class="randomize-btn">Randomize</button>
+
+            <div class="randomized" :class="display">
+                <div type="button" @click="display='hide slide-up'" class="exit">
+                    <div></div>
+                </div>
+                <div class="result">
+                    <table v-for='(item,key,index) in result'>
+                        <tr><td>{{index +1}}.{{key}}</td> <td class="name">{{item}}</td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="dice-coin">
+            <h3 class="roll-dice" @click="toggle()">
+                Roll dice</h3>
+            <div class="content" :class={rolling} @click="rollDice()">
+                <img :src="'dice/dice'+dice+'.jpg'" class="dice">
+            </div>
+            
+            <h3 class="spin-coin" @click="toggle()">
+                spin a coin </h3>
+                <div class="content" :class={spining} @click="spinCoin()" >
+                    <img :src="'coin/coin'+coin+'.png'" class="dice">
+                    <div class="outcome">{{coinOutcome}}</div>
+                </div>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
