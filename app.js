@@ -39,13 +39,75 @@ let vmHead = new Vue({
 let vmMain = new Vue({
     el:'#main',
     data:{
-        display:'hide',
-        result:{
-           king:'john',
-           queen:'rose',
-           prince:'stiles',
-           guard:'drake'
-        }
+        displayResult:'hide',
+        itemList:null,
+        itemArr:[],
+        roleList:null,
+        roleArr:[],
+        numItems:null,
+        error:'',
+        nameListph:'Input list here ...',
+        result:{}
+    },
+    methods:{
+        assign: function(){
+        this.error = '';
+        this.result={};
+            if((this.itemArr.length !==0 && this.roleArr.length !==0) && this.itemArr.length !== this.roleArr.length){
+                this.error = `Make sure both list contains the same
+                number of items.\tThe name list contain
+                 ${this.itemArr.length}, while the role list contain
+                 ${this.roleArr.length}.`;
+                 this.displayResult=''; 
+
+
+            }else if(this.itemArr.length === 0){
+                this.nameListph = 'You cant leave this input box empty!!!'
+            }else{
+                let rand,rand1,len = this.itemArr.length;
+                if(this.numItems && !this.roleList){
+                    for(let i = 1;i <= this.numItems;i++){
+                        rand = Math.round(Math.random()* (this.itemArr.length-1))
+                        this.result[i] = this.itemArr[rand];
+                        this.itemArr.splice(rand,1);
+                    }
+                }else if(!this.numItems && !this.roleList){
+                    for(let i = 1;i <=len;i++){
+                        rand = Math.round(Math.random()* (this.itemArr.length-1))
+                        this.result[i] = this.itemArr[rand];
+                        this.itemArr.splice(rand,1);
+                    }
+                }else if(this.itemList && this.roleList && !this.numItems){
+                    for(let i = 1;i <=len;i++){
+                        rand = Math.round(Math.random()* (this.itemArr.length-1))
+                        rand1 = Math.round(Math.random()* (this.roleArr.length-1))
+                        this.result[`${i}.${this.roleArr[rand1]}`] = this.itemArr[rand];
+                        this.itemArr.splice(rand,1);
+                        this.roleArr.splice(rand1,1);
+                    }
+                }else if(this.itemList && this.roleList && this.numItems){
+                    for(let i = 1;i <=this.numItems;i++){
+                        rand = Math.round(Math.random()* (this.itemArr.length-1))
+                        rand1 = Math.round(Math.random()* (this.roleArr.length-1))
+                        this.result[`${i}.${this.roleArr[rand1]}`] = this.itemArr[rand];
+                        this.itemArr.splice(rand,1);
+                        this.roleArr.splice(rand1,1);
+                    }
+                }
+                this.displayResult=''; 
+                this.getArr()
+            }
+        },
+      getArr:function(){
+          if(this.itemList){
+              this.itemArr = this.itemList.split(',');
+          }else this.itemArr = [];
+
+          if(this.roleList){
+              this.roleArr = this.roleList.split(',');
+          }else this.roleArr = [];
+       }
+ 
     }
 })
 

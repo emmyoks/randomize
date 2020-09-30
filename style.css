@@ -46,6 +46,9 @@ body{
     outline: #e7e711 solid 0.5px;
 }
 .return-num{
+    overflow: hidden;
+}
+.return-num input{
     width: 30px;
     text-align: center;
     background-color: rgba(200,200,200,0.2);
@@ -54,6 +57,20 @@ body{
 }
 input:focus{
     outline: hsl(60, 86%, 49%) solid 0.5px;
+}
+@keyframes off-on-screen{
+    0%{left: 0;}
+    10%{left:0;}
+    50%{left: 100%;}
+    90%{left:0;}
+    100%{left: 0;}
+}
+.return-num .important{
+    position: relative;
+    animation: off-on-screen 15s linear infinite;
+    font-size:0.8em;
+     margin-top: -1em;
+     margin-bottom: 1em;
 }
 .randomize-btn{
     border: none;
@@ -117,6 +134,9 @@ input:focus{
     border-radius: 10px;
     background-color: #11160c;
     transform: translate(-50%,-50%);
+}
+.error{
+    color: #ff4848;
 }
 .result table{
     width: 100%;

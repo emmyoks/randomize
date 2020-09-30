@@ -18,23 +18,32 @@
     </header>
     <div class="container">
         <div id="main">
-            <p class="guide">Enter a list of names,words or phrase, <span class="important">Seprated by commas</span>
-            in any order to randomly select a specified number (leave empty to randomize all) of items 
+            <p class="guide">Enter a list of names,words or phrase, 
+                <span class="important">Seprated by commas</span>
+            in any order to randomly select a specified number of items 
             from the list, you can also enter a list of roles to randomly
             attach to each item (leave empty for default).</p>
         
-            <textarea class="user-list-names" placeholder="Input list here ..."></textarea>
-            <p>Return <input type="number" class="return-num"> item(s).</p>
-            <textarea class="user-list-roles" placeholder="Input list of roles here ..."></textarea>
-            <br/><button @click="display=''" class="randomize-btn">Randomize</button>
+            <textarea class="user-list-names" v-model="itemList" 
+           @input="getArr()" :placeholder="nameListph"></textarea>
+            <div class="return-num">Return <input type="number" v-model="numItems" > item(s).
+            <p class="important">(leave 
+                empty to randomize all.)</p></div>
+            <textarea class="user-list-roles" v-model="roleList" 
+            @input="getArr()" placeholder="Input list of roles here ..."></textarea>
+            <br/><button @click="assign()" 
+            class="randomize-btn">Randomize</button>
 
-            <div class="randomized" :class="display">
-                <div type="button" @click="display='hide slide-up'" class="exit">
+            <div class="randomized" :class="displayResult">
+                <div type="button" 
+                @click="displayResult='hide slide-up'" class="exit">
                     <div></div>
                 </div>
                 <div class="result">
-                    <table v-for='(item,key,index) in result'>
-                        <tr><td>{{index +1}}.{{key}}</td> <td class="name">{{item}}</td></tr>
+                    <p class="error">{{error}}</p>
+                    <table v-for='(item,role) in result'>
+                        <tr><td>{{role}}</td> 
+                            <td class="name">{{item}}</td></tr>
                     </table>
                 </div>
             </div>
