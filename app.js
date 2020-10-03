@@ -39,7 +39,7 @@ let vmHead = new Vue({
 let vmMain = new Vue({
     el:'#main',
     data:{
-        displayResult:'hide',
+        displayResult:'',
         itemList:null,
         itemArr:[],
         roleList:null,
@@ -58,8 +58,7 @@ let vmMain = new Vue({
                 number of items.\tThe name list contain
                  ${this.itemArr.length}, while the role list contain
                  ${this.roleArr.length}.`;
-                 this.displayResult=''; 
-
+                 this.displayResult='show'; 
 
             }else if(this.itemArr.length === 0){
                 this.nameListph = 'You cant leave this input box empty!!!'
@@ -94,7 +93,7 @@ let vmMain = new Vue({
                         this.roleArr.splice(rand1,1);
                     }
                 }
-                this.displayResult=''; 
+                this.displayResult='show'; 
                 this.getArr()
             }
         },

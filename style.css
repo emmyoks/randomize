@@ -99,7 +99,7 @@ input:focus{
     background-color: rgba(231, 231, 17,0.7);
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 100%;
 }
 
 .exit{
@@ -120,7 +120,7 @@ input:focus{
     transform: rotateZ(45deg);
 }
 
-.hide .exit div{
+.slide-up .exit div{
     transform: rotateZ(0deg);
     border-left: none;
 }
@@ -176,8 +176,8 @@ td.name{
 .active + .content{
     max-height: 150px;
 }
-.hide{
-    bottom:100%;
+.show{
+    bottom:0;
 }
 .slide-up{
     animation: slide-up 0.5s linear;
