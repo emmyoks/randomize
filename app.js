@@ -9,7 +9,7 @@ props:['text']
 let vmHead = new Vue({
     el:'header',
     data:{
-        text:'RANDOMIZE',
+        text:'RANDUP',
         textArr:[],
         displayText:'',
         i:0

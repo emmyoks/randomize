@@ -16,12 +16,12 @@ body{
 }
 @keyframes stretch{
    from{width: 1em;}
-   to{width: 7em;}
+   to{width: 5em;}
 }
 .logo-main{
     background-color: #e7e711;
     color: #11160c;
-    width: 7em;
+    width: 5em;
     font-size: 2em;
     border-radius: 1.5em;
     position: absolute;
